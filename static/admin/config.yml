@@ -1,18 +1,40 @@
 backend:
   name: github
-  repo: thomaswang/gatsby-personal-starter-blog
+  repo: sendhq/sendblog
+  branch: staging
 
 media_folder: content/assets
 public_folder: ../assets
 
 collections:
-  - name: blog
-    label: Blog
-    folder: content/blog
+  - name: "blog"
+    label: "Blog"
+    folder: "src/pages/blog"
     create: true
+    slug: "{{slug}}"
     fields:
-      - { name: path, label: Path }
-      - { name: date, label: Date, widget: date }
-      - { name: title, label: Title }
-      - { name: description, label: Description }
-      - { name: body, label: Body, widget: markdown }
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Featured Post", name: "featuredpost", widget: "boolean"}
+      - {label: "Featured Image", name: "featuredimage", widget: image}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Author", name: "author", widget: "string"}
+      - label: "Category"
+        name: "category"
+        widget: "relation"
+        searchFields: ["title"]
+        display_fields: ["title"]
+        collection: "category"
+        valueField: "title"
+  - name: "category"
+    label: "Category"
+    folder: "src/pages/categories"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "text"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}

@@ -37,13 +37,13 @@ export const BlogPostTemplate = ({
       <div className="top back_sky clearfix">
         <div className="contain post_header pt4">
           <p className="m-b category_date pt">
-            <a href="#" className="_bold uppercased">
+            <a href="##" className="_bold uppercased">
               {category}
             </a>
           </p>
 
           <h1>
-            <a href="">{title}</a>
+            <a href="##">{title}</a>
           </h1>
           <p className="tagline mb4">{description}</p>
           <div className="post_image">

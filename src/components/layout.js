@@ -1,88 +1,68 @@
-import React from "react"
-import { Link } from "gatsby"
-import styled from "styled-components"
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import Footer from '../components/Footer'
+import Navbar from '../components/Navbar'
+import './all.sass'
+import useSiteMetadata from './SiteMetadata'
+import { withPrefix } from 'gatsby'
 
-import { rhythm, scale } from "../utils/typography"
+const TemplateWrapper = ({ children }) => {
+  const { title, description } = useSiteMetadata()
+  return (
+    <div>
+      <Helmet>
+        <html lang="en" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
 
-class Layout extends React.Component {
-  render() {
-    const { location, title, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
-    const blogPath = `${__PATH_PREFIX__}/blog/`
-    let header
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href={`${withPrefix('/')}img/favicon.ico`}
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          href={`${withPrefix('/')}img/favicon.ico`}
+          sizes="32x32"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          href={`${withPrefix('/')}img/favicon.ico`}
+          sizes="16x16"
+        />
 
-    if (location.pathname === rootPath || location.pathname === blogPath) {
-      header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={location.pathname === blogPath ? `/blog/` : `/`}
-          >
-            {title}
-          </Link>
-        </h1>
-      )
-    } else {
-      header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/blog/`}
-          >
-            {title}
-          </Link>
-        </h3>
-      )
-    }
-    return (
-      <Wrapper>
-        <div
-          style={{
-            marginLeft: `auto`,
-            marginRight: `auto`,
-            maxWidth: rhythm(24),
-            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-          }}
-        >
-          <header>{header}</header>
-          <main>{children}</main>
-        </div>
-        <Footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </Footer>
-      </Wrapper>
-    )
-  }
+        <link
+          rel="mask-icon"
+          href={`${withPrefix('/')}img/favicon.ico`}
+          color="#ff4400"
+        />
+        <meta name="theme-color" content="#fff" />
+
+        <meta property="og:type" content="business.business" />
+        <meta property="og:title" content={title} />
+        <meta property="og:url" content="/" />
+        <meta
+          property="og:image"
+          content={`${withPrefix('/')}img/og-image.jpg`}
+        />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@sendfreight" />
+        <meta property="og:site_name" content="The SEND Blog." />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+          rel="stylesheet"
+        />
+      </Helmet>
+
+      <Navbar />
+
+      {children}
+
+      <Footer />
+    </div>
+  )
 }
 
-const Wrapper = styled.div`
-  min-height: 100vh;
-`
-
-const Footer = styled.footer`
-  text-align: center;
-  margin: 24px;
-`
-
-export default Layout
+export default TemplateWrapper

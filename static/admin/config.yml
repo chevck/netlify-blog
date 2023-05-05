@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: sendhq/sendblog
+  repo: chevck/netlify-blog
   branch: staging
 
 media_folder: content/assets

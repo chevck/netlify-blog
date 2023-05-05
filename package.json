@@ -25,6 +25,8 @@
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sass": "^2.2.4",
     "gatsby-plugin-sharp": "^2.0.35",
+    "lodash": "^4.17.15",
+    "lodash-webpack-plugin": "^0.11.4",
     "gatsby-plugin-styled-components": "^3.0.7",
     "gatsby-plugin-typography": "^2.2.13",
     "gatsby-remark-copy-linked-files": "^2.0.11",

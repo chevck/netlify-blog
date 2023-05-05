@@ -1,5 +1,6 @@
 backend:
   name: git-gateway
+  repo: chevck/me-sendblog
   branch: master
   commit_messages:
     create: 'Create {{collection}} “{{slug}}”'

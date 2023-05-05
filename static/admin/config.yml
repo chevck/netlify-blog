@@ -1,7 +1,7 @@
 backend:
   name: git-gateway
-  repo: chevck/me-sendblog
-  branch: master
+  repo: chevck/netlify-blog
+  branch: me-sendblog
   commit_messages:
     create: 'Create {{collection}} “{{slug}}”'
     update: 'Update {{collection}} “{{slug}}”'
